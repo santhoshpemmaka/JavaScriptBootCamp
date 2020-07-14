@@ -19,8 +19,8 @@ const note1 = [{
     title: "to workout",
     body: "to ruuning daily"
 },{
-    title : "sadfasd",
-    body : "sdaf"
+    title : "watch movie",
+    body : "action movies "
 }]
 
 console.log(notes.length)
