@@ -8,8 +8,16 @@
  <body>
      <h1>javaScript</h1>
      <h2>Take notes and never forget</h2>
-     <p>This application was created by <i>SanthoshPemmaka</i></p>
-     <p>some note text</p>
+     <input id='inputText' type="text" placeholder="Enter the text" >
+     <select id="filterId">
+         <option value="byEdited">Sort by last edited</option>
+         <option value="byCreated">Sort by last created</option>
+         <option value="alphabetically">Sort by alphabetically</option>
+     </select>
+     <div id="notes"></div>
+     <button id="createNote">Create Note</button>
+    
+    
      <script src="notes-app.js"></script>
  </body>
  </html>

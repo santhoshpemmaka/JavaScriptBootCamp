@@ -7,11 +7,15 @@
 </head>
 <body>
     <h1>TodoList</h1>
-    <p>Learn the JavaScript</p>
-    <p>Learn BackEndDeveloper</p>
-    <p>Learn the Docker</p>
-    <p>Learn the cloudComputing</p>
-    <p>Back Chain Technology</p>
+    <input id="inputTodo" type="text" placeholder="Filtering the TodoList">
+    <label id="todoList">
+        <input type="checkbox"> Hide Completed TodoList
+    </label>
+    <div id="todos"></div>
+    <form id="todo-list">
+        <input type="text" placeholder="Adding TodoList" name="todoList">
+        <button>Add Todo</button>
+    </form>
     <script src="todoList.js"></script>
 </body>
 </html>
