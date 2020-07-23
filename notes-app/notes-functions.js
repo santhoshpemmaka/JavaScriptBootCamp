@@ -1,13 +1,12 @@
 // Read exists notes form the SessionStorage
+'use strict'
 
 const getSavedNotes = () => {
     const noteJSON = sessionStorage.getItem('notes')
-
-    if(noteJSON !== null){
-        return JSON.parse(noteJSON)
-    }
-    else{
-        return [];
+    try{
+        return noteJSON ?  JSON.parse(noteJSON) : [];
+    } catch(e){
+        return []
     }
 }
 
@@ -63,7 +62,7 @@ const generatedDOM = (filter) => {
 
 const sortNotes = (notes, sortBy) =>{
     if(sortBy == 'byEdited'){
-        return notes.sort((a,b) =>{
+        return notes && notes.sort((a,b) =>{
             if(a.updateAt > b.updateAt){
                 return -1
             }
@@ -76,7 +75,7 @@ const sortNotes = (notes, sortBy) =>{
         } )
     }
     else if(sortBy == 'byCreated'){
-        return notes.sort((a,b) =>{
+        return notes && notes.sort((a,b) =>{
             if(a.createAt > b.createAt){
                 return -1
             }
@@ -99,7 +98,7 @@ const sortNotes = (notes, sortBy) =>{
 
 const render = (notes,filters) =>{
     notes = sortNotes(notes,filters.sortBy)
-    const filterNotes = notes.filter((note) => {
+    const filterNotes = notes && notes.filter((note) => {
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
 
     })

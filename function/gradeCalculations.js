@@ -1,4 +1,6 @@
 const gradeCalculations = (studentScore, totalScore) => {
+   
+    if(typeof(studentScore) =='number' && typeof(totalScore) == 'number'){
 
     let gradeAssign = (studentScore / totalScore) * 100;
     if(90 <= gradeAssign || gradeAssign <=100){
@@ -16,8 +18,17 @@ const gradeCalculations = (studentScore, totalScore) => {
     else {
         return `You got a E {${gradeAssign}}`;
     }
+}
+else{
+    // throw Error('Please provide numbers only')
+    throw("please valid number")
+}
 
 }
 
-
-console.log(gradeCalculations(50, 100))
+try{
+    console.log(gradeCalculations("50", "100"))
+}catch(e){
+    // console.log(e.message)
+    console.log(e)
+}

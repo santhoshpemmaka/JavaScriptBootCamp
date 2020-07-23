@@ -1,3 +1,5 @@
+'use strict'
+
 
 const inputElement = document.querySelector("#note-title")
 const inputBody = document.querySelector("#note-body")

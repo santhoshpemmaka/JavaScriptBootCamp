@@ -1,13 +1,12 @@
-
+'use strict'
 
 // Get the todoList from the sessionStorage
 const getTodolist = () =>{
     const todoJSON = sessionStorage.getItem('todos')
-    if(todoJSON != null){
-        return JSON.parse(todoJSON)
-    }
-    else{
-        return []
+    try{
+        return todoJSON ? JSON.parse(todoJSON) : []
+    } catch(e){
+        return [];
     }
 }
 
