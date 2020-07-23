@@ -32,5 +32,23 @@ const sortNotes = (notes) => {
     })
 }
 
+const sortList = (list) =>{
+    return list.sort((a,b) => {
+        if(a < b){
+            return -1
+        }
+        else if( a > b) {
+            return 1
+        }
+        else{
+            return 0
+        }
+    })
+}
+
+const list = [3,5,1,0,-3,83]
+console.log(sortList(list))
+
+
 sortNotes(note1)
 console.log(note1)

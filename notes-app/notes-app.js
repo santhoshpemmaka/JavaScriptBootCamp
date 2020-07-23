@@ -1,45 +1,26 @@
-// DOM - Document object model
-const note1 = [{
-    title: 'My next trip',
-    body: 'I would like to go to Spin'
 
-},
-{   
-    title: 'habbitis to  work on',
-    body : "execrise, Eating, Sleeping"
-
-},
-{
-    title: "to workout",
-    body: "to ruuning daily"
-},{
-    title : "watch movie",
-    body : "action movies "
-}]
-
+let note1 = getSavedNotes();
 const filters = {
-    searchText: ''
-}
-
-const render = (notes,filters) =>{
-    const filterNotes = notes.filter((note) => {
-        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-
-    })
-    
-    document.querySelector('#notes').innerHTML = ''
-
-    filterNotes.forEach((filter) => {
-        const noteEl = document.createElement('p')
-        noteEl.textContent = filter.title
-        document.querySelector('#notes').appendChild(noteEl)
-    })
+    searchText: '',
+    sortBy: 'byEdited'
 }
 
 render(note1,filters)
 
 document.querySelector('#createNote').addEventListener('click', (e) =>{
-    e.target.textContent = "The button Clicked"
+    id = uuidv4()
+    const timeStamp = moment().valueOf()
+
+    note1.push({
+        id:id,
+        title: '',
+        body: '',
+        createAt: timeStamp,
+        updateAt: timeStamp
+    })
+    savedNotes(note1)
+
+    location.assign(`file:///home/santhosh/Documents/javaScript/notes-app/edit.html#${id}`)
 })
 
 
@@ -49,8 +30,42 @@ document.querySelector('#inputText').addEventListener('input',(e) => {
 })
 
 document.querySelector("#filterId").addEventListener('change',(e) => {
-    console.log(e.target.value)
+    filters.sortBy = e.target.value
+    render(note1,filters)
 })
+
+
+ 
+
+
+
+// const birthDay = moment()
+// birthDay.year(1995).month(6).date(1)
+// console.log(birthDay.format('MMM D, YYYY'))
+
+
+
+// const now = moment()
+// console.log(now.toString())
+// now.subtract(2,'year').subtract(20,'days')
+// console.log(now.toString())
+// console.log(now.format('MMMM Do, YYYY'))
+// console.log(now.fromNow())
+
+// const nowTimestrap = now.valueOf()
+// console.log(moment(nowTimestrap).format('MM DD YY')) 
+
+
+// const now = new Date();
+// console.log(now.toString())
+
+// console.log(`year: ${now.getFullYear()}`)
+// console.log(`Month: ${now.getMonth()}`)
+// console.log(`date: ${now.getDate()}`)
+// console.log(`hours: ${now.getHours()}`)
+// console.log(`year: ${now.getMinutes()}`)
+// console.log(`year: ${now.getSeconds()}`)
+
 
 // document.querySelector('#name-form').addEventListener('submit',(e) => {
 //     e.preventDefault()
@@ -78,5 +93,21 @@ document.querySelector("#filterId").addEventListener('change',(e) => {
 // newParagraphy.textContent = "This is the new element from javaScript"
 // document.querySelector('body').appendChild(newParagraphy)
 
+// sessionStorage.setItem('location','AndraPrasad')
+
+// console.log(sessionStorage.getItem('location'))
+
+// sessionStorage.removeItem('location')
+// sessionStorage.clear() // sessionStorage clear all the data
 
 
+// const user  = {
+//     name: 'SanthoshPemmaka',
+//     age:27
+// }
+// const userJSON = JSON.stringify(user)
+// sessionStorage.setItem('user',userJSON)
+
+// const userJson = JSON.parse(sessionStorage.getItem('user'))
+
+// console.log(`${userJson.name} is the ${userJson.age}`)
